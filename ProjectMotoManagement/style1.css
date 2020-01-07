@@ -1,0 +1,215 @@
+table{
+	margin-bottom: 5px;
+	color: black;
+	background-color: #98E7E4;
+	opacity:0.7;
+	margin-left: 30px;
+	margin-right: 30px;
+	width: 1200px;
+}
+table tr th{
+	text-align: center;
+	border: 1px solid black;
+}
+table tr td {
+	width: 200px;
+	margin-left: 20px;
+	text-align: center;
+	border: 1px solid black;
+		}
+.border-main{
+			border: 1px solid #dcdcdc;
+			width: 820px;
+			text-align: center;
+			justify-content: center;
+			margin-left: 210px;
+			margin-top: 310px;
+		}
+.line{
+		margin-left: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+		width: 800px;
+		margin-left: 10px;
+		}
+.imageoto{
+	width: 100px;
+	height: 100px;
+}
+body{
+	margin: 0;
+}
+label{
+	color: white;
+	margin-bottom: 20px;
+	margin-right: 70px;
+}
+input{
+	margin-bottom: 20px;
+	width: 180px;
+	height: 30px;
+}
+.button{
+	border: 1px solid black;
+	border-radius: 6px;
+	background-color: green;
+	width: 70px;
+	height: 30px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+}
+
+.login {
+	width: 400px;
+	margin: auto;
+	background: #000;
+	color:white;
+	padding: 20px 30px;
+	box-sizing: border-box;
+}
+
+.login input{
+	margin-top: 10px;
+	height: 30px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.login button{
+	width: 100%;
+	margin-top: 15px;
+	height: 30px;
+	background: green;
+	color:white;
+ 	outline: none;
+ 	border: none;
+}
+
+.header{
+	background: red;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+}
+
+.brand{
+	margin-left: 16px;
+}
+
+.user-info{
+	display: flex;
+	align-items: center;
+	margin-right: 16px;
+}
+
+.user-info .name{
+	color: white;
+	margin-right: 8px;
+}
+
+.cart-info {
+	position: relative;
+}
+
+.cart {
+	background: green;
+	color: white;
+	width: 80px;
+	height: 30px;
+	border: none;
+	outline: none;
+}
+
+.cart-number{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 20px;
+	height: 20px;
+	background: blue;
+	color:white;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	border: 1px solid white;
+}
+
+.moto-container {
+	margin-left: 63px;
+	padding: 50px 30px 30px 30px;
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 1000px;
+}
+
+.item-moto {
+	margin-left: 20px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	width:260px;
+}
+
+.image-moto{
+	width: 100%;
+}
+
+.item-moto-name {
+	font-size: 20px;
+	margin-left: 8px;
+}
+
+.item-moto-type {
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 8px;
+	text-decoration: underline;
+}
+
+.item-moto-price{
+	font-size: 18px;
+	margin-left: 8px;
+}
+
+.item-moto-old-price{
+	font-size: 18px;
+	margin-left: 8px;
+	color: #888;
+	text-decoration: line-through;
+}
+
+.item-moto-edit{
+	background:green;
+}
+.item-moto-delete{
+	background: red;
+}
+.item-moto-buy{
+	background: green;
+}
+
+.footer{
+	background: #333;
+	padding: 16px;
+	color: white;
+}
+
+@media only screen and (max-width: 600px) {
+   .container {
+	  display: grid;
+	  grid-template-columns: auto;
+   }
+}
+.center a{
+	text-decoration: none;
+}
+.header1{
+	display: flex;
+	background-color: black;
+	height: 500px;
+}
