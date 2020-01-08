@@ -1,17 +1,11 @@
 
 document.getElementById("login-form").style.display = "none";
 
-
-
 function onLoginClicked(){
-
 	document.getElementById("login-form").style.display = "block";
 }
 
-
 function onRegisterClicked(){
-	alert("huong");
-
 	document.getElementById("register-form").style.display = "block";
 }
 
@@ -21,6 +15,12 @@ function onEditClicked(){
 }
 
 function DisplayCart(){
+	document.getElementById("display").style.display = "none";
     alert("Cart");
     document.getElementById("DisplayCart").style.display = "block";
+}
+function OK(){
+	document.getElementById("display").style.display = "none";
+    alert("Cart");
+    document.getElementById("sumcart").style.display = "block";
 }

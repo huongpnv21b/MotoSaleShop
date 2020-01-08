@@ -48,6 +48,7 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
 	<form id="login-form" class="login" method="post">

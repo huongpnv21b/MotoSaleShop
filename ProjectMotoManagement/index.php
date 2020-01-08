@@ -5,7 +5,17 @@
 	require "model/Kawasaki_Moto.php";
 	// require "model/Cart.php";
 
-
+// =========================update for  admin==========================
+	if(isset($_POST['edit'])){
+	   $name_edit=$_POST['namePr'];
+	   $price_edit=$_POST['pricePr'];
+		 $image_edit=$_POST['imagePr'];
+		 $stm='UPDATE shoe set name="'.$name_edit.'", price='.$price_edit.', pic="Pic/'.$image_edit.'" WHERE id='.$_POST['edit'].'';
+		 $db->query($stm)->fetch_all();
+  
+	  
+	 
+   }
 	
 // ===================register============
     if (isset($_POST["register"])){
@@ -37,7 +47,7 @@
 	$rows = mysqli_num_rows($resultcart); 
 
 	 $sql1 = "SELECT * from cart";
-	 echo $sql1;
+	 // echo $sql1;
      $result1 = $db->query($sql1)->fetch_all();
 
     $sql = "SELECT * from users";
@@ -65,21 +75,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Moto</title>
+	<title>My Motor</title>
+	<script src="https://www.w3schools.com/lib/w3.js"></script>
 	<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
 	<div class="header">
 		<h1 class="brand">My Moto</h1>
-		<div class="center">
-			<a href="#"> Du an</a> &ensp;
-			<a href="#"> Bang gia</a>&ensp;
-			<a href="#"> San Pham</a>&ensp;
-			<a href="#"> Khuyen Mai</a>&ensp;
-			<a href="#"> Tin tuc</a>&ensp;
-			<a href="#"> Co to chuc</a>&ensp;
-			<a href="lienhe.html"> Lien he</a>&ensp;
-
+		<div class="center">	
+			<img style="width: 180px; height: 50px;"src="images/moto/logo.png" alt="Not found pictủe">
+			<a href="#">Trang chu &ensp;|&ensp;</a>
+			<a href="#">Honda &ensp;|&ensp;</a>
+			<a href="#">Kawasaki &ensp; |&ensp;</a>
+			<a href="#">Thong tin &ensp;|&ensp;</a>
+			<a href="lienhe.php">Lien he &ensp; |&ensp;</a>
 		</div>
 		<?php 
 			require"login.php";
@@ -92,8 +101,10 @@
 		<?php
 			} else { 
 		?>		
-				<div class="user-info">
-					<marquee><p class="name">Hello <?php echo $user->fullName ?></p></marquee>
+		<?php 
+			}
+		?>
+		<div class="user-info">
 					<div class="cart-info">
 						<button class="cart" onclick="DisplayCart()" name="cart">Cart</button>
 						<span class="cart-number"><?php echo $rows ?></span>
@@ -102,14 +113,20 @@
 						<button>Logout</button>
 					</form>
 				</div>
-		<?php 
-			}
-		?>
 	</div>
 	<!-- <div id="giaodien"> -->
-	<div class= "header1">
-		<img  style ="width:100%; height: 500px;"src="images/moto/header.jpg">
-	</div>	
+		<div>
+		<img class="nature" src="images/slide/hinh1.jpg" width="100%" height="500px">
+		<img class="nature" src="images/slide/hinh2.jpg" width="100%"height="500px">
+		<img class="nature" src="images/slide/hinh3.jpg" width="100%" height="500px">
+		<img class="nature" src="images/slide/hinh4.jpg" width="100%" height="500px">
+		<img class="nature" src="images/slide/hinh5.jpg" width="100%" height="500px">
+		<img class="nature" src="images/slide/hinh6.jpg" width="100%" height="500px">
+
+		<script>
+		w3.slideshow(".nature", 3000);
+		</script>
+	</div>
 
 	<form id="register-form" class="login" method="post" style="display: none;">
 		<h1>Register</h1>
@@ -123,10 +140,18 @@
 		<button type="submit" class="button" name="register">Register</button>
 	</form>
 
+    <form id="edit-form" method="post" style="display: none;">
+		<h1>Edit</h1>
+		<input type="text" name="name" placeholder="Username">
+        <input type="text" name="price" placeholder="Price">
+		<input type="text" name="type" placeholder="Type">
+		<button name='update'>Update</button>
+	</form>
 
     <?php 	
     	 include "displayProduct.php"; 
      ?>
+     <center>
     <form id="DisplayCart" method="post" style="display: none;">
     	<table>
     		<tr>
@@ -135,8 +160,7 @@
     			<th>Price</th>
     			<th>Image</th>
     			<th> Quantity</th>
-    			<th> Total </th>
-    			<<th> Action</th>
+    			<th> Action</th>
     		</tr>
     		<?php
     			for($i=0;$i<count($result1);$i++){
@@ -144,31 +168,34 @@
     			
     		<tr>
     			<td> <?php echo $result1[$i][0] ?> </td>
-                <td><img  src="<?php echo $result1[$i][3] ?>" style="width:20px ; height: 20px" alt="Image"></td>
-                <td><?php echo $result1[$i][1] ?></td>
-                <td><?php echo $result1[$i][2] ?></td>
-    			<td><form method="post"><input type="number" name="quantity"></form></td>
-    			<td> <?php  
-    			if(isset($_POST["quantity"])) 
-    					$_POST["quantity"]*$result[$i][2] 
-    				
-    				?>  </td>
-    			<td><button class="delete" name="id_cart" value="<?php echo $result1[$i][0];?>">Delete</button></td>
+                <td> <?php echo $result1[$i][1] ?></td>
+                <td><?php echo $result1[$i][3] ?></td>
+                <td><img  src="<?php echo $result1[$i][2] ?>" style="width:20px ; height: 20px" alt="Image"></td>
+    			<td><form method="post"><input type="text" name="quantity"></form></td>
+    			<td>
+    				<button class="delete" name="id_cart" value="<?php echo $result1[$i][0];?>">Delete</button></td>
     		</tr>
     		<?php
     	}
     		?>
     	</table>
-    	<div class="pay">
+    		<button onclick="OK()">OK</button>
+    </form>
+    <div  id="sumcart" class="pay">
 		    <h1>CỘNG GIỎ HÀNG</h1>
-		    <p>Tạm tính: <?php echo sum($result1);?></p>
-		    <p>Phí giao hàng: <?php echo (sum($result1)*0.01);?></p>
-		    <p>Tổng: <?php echo (sum($result1)+(sum($result1)*0.01));?></p>
+		    <p>Tạm tính:  <?php  
+    			if(isset($_POST["quantity"])){ 
+    					echo $_POST["quantity"]*$result[$i][2] ;
+    				}
+    				?>
+		    </p>
+		    <p>Phí giao hàng: <?php  echo $chiphi=$tien*0.10 ?></p>
+		    <p>Tổng: <?php echo ($tien+$chiphi);?></p>
 		    <form action = "" method="post">
 		    <button style="text-align: center;" name="order">Thanh toán</button>
 		    </form>
     	</div>
-    </form>
+    </center>
     <!-- <div class="div">
 
 		<img src="images/moto/moto1.jpg" alt=" Update image ">
