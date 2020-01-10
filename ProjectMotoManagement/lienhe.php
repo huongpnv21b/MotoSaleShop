@@ -41,8 +41,8 @@
 				<a href="index.php">Trang chu &ensp;|&ensp;</a>
 				<a href="#">Honda &ensp;|&ensp;</a>
 				<a href="#">Kawasaki &ensp; |&ensp;</a>
-				<a href="#">Thong tin &ensp;|&ensp;</a>
-				<a href="lienhe.html">Lien he &ensp; |&ensp;</a>
+				<a href="thongtin.php">Thong tin &ensp;|&ensp;</a>
+				<a href="lienhe.php">Lien he &ensp; |&ensp;</a>
 			</div>
 		</div>
 	</div>
@@ -72,7 +72,7 @@
 			<input type="text" name="tieude" placeholder="Tieu de"><br><br>
 			<textarea rows="4" class="form-control mb-3" cols="60" name="ghichu" placeholder="Ghi chú"></textarea><br><br>
 			<center>
-				<button style="background-color: red;">GỬI LIÊN HỆ</button>	
+				<button style="background-color: red;" onclick="Guilienhe()">GỬI LIÊN HỆ</button>	
 			</center>																						
 		</div>
 	</div>
@@ -93,5 +93,6 @@
 		
 		<p>Copyright by me 2019</p>
 	</div>
+	<script src="index.js"></script>
 </body>
 </html>

@@ -35,7 +35,6 @@
 		 		values('$name1','$price1','$image')";
      	$db->query($sql);
      	echo "<script> alert('them thanh cong'); </script>";
-  
 	  }
       //=======Add product of Admin========
       if(isset($_POST["add"])){
@@ -132,7 +131,7 @@
                                 <div style="display: flex;">
                                     <button class="item-moto-edit" onclick="onEditClicked()" name="edit">Edit</button>
                                     <form action="index.php" method="post">
-                                        <button class="item-moto-delete" name="id_delete" value="<?php echo $motos[$i]->id;?>">Delete <?php echo $motos[$i]->id;?></button>
+                                        <button class="item-moto-delete" name="id_delete" value="<?php echo $motos[$i]->id;?>">Delete</button>
                                     </form>
                                 </div>
                             </td>

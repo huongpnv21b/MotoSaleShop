@@ -111,7 +111,7 @@
 			<a href="#">Trang chu &ensp;|&ensp;</a>
 			<a href="#">Honda &ensp;|&ensp;</a>
 			<a href="#">Kawasaki &ensp; |&ensp;</a>
-			<a href="#">Thong tin &ensp;|&ensp;</a>
+			<a href="thongtin.php">Thong tin &ensp;|&ensp;</a>
 			<a href="lienhe.php">Lien he &ensp; |&ensp;</a>
 		</div>
 		<?php 
@@ -135,8 +135,14 @@
 					</div>
 					<form action="index.php">
 						<button>Logout</button>
-					</form>
-				</div>
+					</form><br>
+					<p style="background-color: black; color:white;">
+
+                            <?php if(isset($_SESSION['name'])){
+                            	echo ($_SESSION['name']);
+                            }?>
+                    </p>
+		</div>
 	</div>
 	<!-- <div id="giaodien"> -->
 		<div style="margin-left:185px;">
@@ -211,12 +217,16 @@
                 <td> <?php echo $result1[$i][1] ?></td>
                 <td><?php echo $result1[$i][3] ?></td>
                 <td><img  src="<?php echo $result1[$i][2] ?>" style="width:20px ; height: 20px" alt="Image"></td>
-    			<td><form method="post" style="display: flex;s"><input type="text" name="quantity"><button name="load"><img style="width: 20px;height: 20px;" src="images/moto/refresh.png"></button></form></td>
-    			<td><?php  if(isset($_POST['load'])){
+    			<td><form method="post" style="display: flex;s"><input type="text" name="quantity"><button name="load" value="<?php echo $result1[$i][0] ?>"><img style="width: 20px;height: 20px;" src="images/moto/refresh.png"></button></form></td>
+    			<td><?php 
+    			for ($j=0; $j < count($result1); $j++) { 
+    			if(isset($_POST['load'])){
+    				if($result1[$i][0]==$_POST["load"]){
     			if(isset($_POST['quantity'])){
     						$sl=$_POST['quantity'];
     						echo $tt=$sl*$result1[$i][3];
-    				}}?>    					
+    						break;
+    				}}}}?>    					
     			</td>
     			<td>
     				<button class="delete" name="id_cart" value="<?php echo $result1[$i][0];?>">Delete</button></td>
@@ -227,20 +237,20 @@
     	</table>
     		<button onclick="OK()">OK</button>
     </form>
-    <div  id="sumcart" class="pay">
+    <div  id="sumcart" class="pay" ">
 		    <h1>CỘNG GIỎ HÀNG</h1>
 		    <p>Tạm tính:  <?php  
     					echo $tt;		
     				?>
 		    </p>
-		    <p>Phí giao hàng: <?php  echo $chiphi=$tt*0.10 ?></p>
+		    <p>Phí giao hàng: <?php  echo $chiphi=$tt*0.15 ?></p>
 		    <p>Tổng: <?php echo ($tt+$chiphi);?></p>
 		    <form action = "" method="post">
 		    <button style="text-align: center;" name="order">Thanh toán</button>
 		    </form>
     	</div>
     </center>
-    <div style="display: flex;margin-left: 200px;">
+    <!-- <div style="display: flex;margin-left: 200px;">
 	    <div class="b">
 			<img class="img" src="images/moto/moto1.jpg" alt=" Update image ">
 			<p> </p>
@@ -248,7 +258,7 @@
 	    <div class="c">
 			<img class="img" src="images/moto/moto1.jpg" alt=" Update image ">
 	    </div>
-	</div>
+	</div> -->
 	<div class="footer">
 		
 			<p>Liên hệ</p>

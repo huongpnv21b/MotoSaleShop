@@ -21,6 +21,8 @@ function DisplayCart(){
 }
 function OK(){
 	document.getElementById("display").style.display = "none";
-    alert("Cart");
     document.getElementById("sumcart").style.display = "block";
+}
+function Guilienhe(){
+    alert("GUI THANH CONG");
 }
