@@ -141,22 +141,26 @@ input{
 }
 
 .moto-container {
-	margin-left: 13px;
-	margin-right: 33px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 100px;
+	margin-right: 60px;
 	padding: 50px 30px 30px 30px;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 1000px;
+    width: 1200px;
+    border: 2px solid #BDBDBD;
+    border-radius: 8px;
+    height: 800px;
 }
 
 .item-moto {
-	border-radius: 6px;
+	border: 1px solid #BDBDBD;
+    border-radius: 8px;
 	margin-left: 20px;
 	margin-bottom: 20px;
-	border: 1px solid black;
 	width:260px;
 }
-
 .image-moto{
 	width: 100%;
 }
@@ -228,4 +232,33 @@ input{
 	display: flex;
 	background-color: black;
 	height: 500px;
+}
+.b {
+  width: 200px;
+  height: 150px;
+  background-color: yellow;
+  -ms-transform: skewY(20deg); 
+  -webkit-transform: skewY(20deg); 
+  transform: skewY(20deg);
+  margin-right: 10px;
+}
+.c {
+  width: 200px;
+  height: 150px;
+  background-color: yellow;
+  -ms-transform: skewY(-20deg); 
+  -webkit-transform: skewY(-20deg); 
+  transform: skewY(-20deg);
+  margin-right: 10px;    
+}
+.img{
+	width: 200px;
+	height: 150px;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  border-radius: 50%;
 }

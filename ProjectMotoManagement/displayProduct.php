@@ -3,20 +3,6 @@
 	// require "model/Kawasaki_Moto.php";
 	require_once "database.php";
 
-    // =======Add product of Admin========
-      if(isset($_POST["add"])){
-        echo "<script> alert('them thanh cong'); </script>";
-        $name=$_POST["name"];
-        $price=$_POST["price"];
-        $type=$_POST["select"];
-        $image=$_POST["img"];
-    
-        $sql = "INSERT into moto values(null,'".$name."',".$price.",'".$select."','images/moto/".$img."')";
-        echo $sql;
-        $db->query($sql);
-    }
-
-
 	$sql = "SELECT * from moto";
 	$result = $db->query($sql)->fetch_all(MYSQLI_ASSOC);
 
@@ -36,7 +22,7 @@
         $del='DELETE FROM moto WHERE id='.$id;
         $db->query($del);
     }
-    
+    // ============buy======
      if(isset($_POST["buy"])){
 	    	$id=$_POST["buy"];
 	    	// echo $id;
@@ -51,6 +37,18 @@
      	echo "<script> alert('them thanh cong'); </script>";
   
 	  }
+      //=======Add product of Admin========
+      if(isset($_POST["add"])){
+        echo "<script> alert('them thanh cong'); </script>";
+        $name=$_POST["name"];
+        $price=$_POST["price"];
+        $type=$_POST["select"];
+        $image=$_POST["img"];
+    
+        $sql = "INSERT into moto values(null,'".$name."',".$price.",'".$select."','images/moto/".$img."')";
+        echo $sql;
+        $db->query($sql);
+    }
 
 ?>
 
@@ -84,7 +82,9 @@
                 if (isset( $_SESSION['log'] ) ) {
                 if($_SESSION['log']==true){
         ?>
-        <form action ="displayProduct.php" class="addproduct" method="post">
+        <script>document.getElementById("show").style.display = "none";</script>
+        <form action ="index.php" class="addproduct" method="post">
+            <br><h3>THEM SAN PHAM MOI</h3><br>
             <label > Name product</label>&ensp;
             <input type="text" name="name"><br>
             <label > Price product</label>&ensp;
@@ -99,6 +99,13 @@
                     <input type="file" class="form-control-file col-md-3" name="img">
             </div>
             <button name="add">Add </button>
+        </form>
+        <form id="edit-form" method="post" style="display: none;">
+            <h2>Edit</h2>
+            <input type="text" name="name" placeholder="Username">&ensp;
+            <input type="text" name="price" placeholder="Price"><br>
+            <input type="text" name="type" placeholder="Type">
+            <button name='update'>Update</button><br>
         </form>
         <center>
             <table>
@@ -124,8 +131,8 @@
                             <td width="100px;">
                                 <div style="display: flex;">
                                     <button class="item-moto-edit" onclick="onEditClicked()" name="edit">Edit</button>
-                                    <form  method="post">
-                                        <button class="item-moto-delete" name="id_delete" value="<?php echo $i;?>">Delete <?php echo $i;?></button>
+                                    <form action="index.php" method="post">
+                                        <button class="item-moto-delete" name="id_delete" value="<?php echo $motos[$i]->id;?>">Delete <?php echo $motos[$i]->id;?></button>
                                     </form>
                                 </div>
                             </td>
@@ -140,6 +147,7 @@
             <?php
                 }else {
             ?>
+            <script>document.getElementById("show").style.display = "none";</script>
             <center>
             <div class="moto-container">
                 

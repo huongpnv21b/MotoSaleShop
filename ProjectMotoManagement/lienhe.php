@@ -35,14 +35,15 @@
 		<h1 class="brand">My Moto</h1>
 		<div class="centera">
 			<div>
-			<img style="width: 180px; height: 50px;"src="images/moto/logo.png" alt="Not found pictủe"></div>s
+				<img style="width: 180px; height: 50px;"src="images/moto/logo.png" alt="Not found pictủe">
+			</div>
 			<div style="justify-content: center;">
-			<a href="index.php">Trang chu &ensp;|&ensp;</a>
-			<a href="#">Honda &ensp;|&ensp;</a>
-			<a href="#">Kawasaki &ensp; |&ensp;</a>
-			<a href="#">Thong tin &ensp;|&ensp;</a>
-			<a href="lienhe.html">Lien he &ensp; |&ensp;</a>
-		</div>
+				<a href="index.php">Trang chu &ensp;|&ensp;</a>
+				<a href="#">Honda &ensp;|&ensp;</a>
+				<a href="#">Kawasaki &ensp; |&ensp;</a>
+				<a href="#">Thong tin &ensp;|&ensp;</a>
+				<a href="lienhe.html">Lien he &ensp; |&ensp;</a>
+			</div>
 		</div>
 	</div>
 	<div style="background-color:yellow;">
@@ -50,27 +51,34 @@
 		 <h1>LIEN HE </h1>
 		 </center>
 	</div>
-	<div style="display: flex; align-items: center;margin-top: 100px;">
-	<div style="margin-right: 100px; margin-left: 50px;">
-		<h2> Chuyen ban le moto phan khoi lon nhap khau</h2>
-	<p>Tu van mua hang: 0353956450</p>
-	<p> <img src="images/moto/address.png"> &emsp; 101B Le Huu Trac,phuong Phuoc My,quan Son Tra, TP.Da Nang</p>
-	<p><img src="images/moto/telephone.png">&emsp; 035.3956.450</p>
-	<p><img src="images/moto/gmail.png">&emsp;hoanghuongnguyen2000@gmail.com</p>
+	<div style="background-color:yellow;margin-top: 30px;">
+		<center>
+		<h1>LIEN HE </h1>
+		</center>
 	</div>
-	<div style="margin-right: 50px; margin-left: 100px;">
-	<h2> De lai loi nhan cho chung toi</h2>
-	<input type="text" name="nameCus" placeholder="Ho va ten khach hang"> &ensp; &ensp;
-	<input type="text" name="email" placeholder="Dia chi email"><br><br>
-	<input type="text" name="phonenumber" placeholder="So dien thoai">&ensp; &ensp;
-	<input type="text" name="tieude" placeholder="Tieu de"><br><br>
-	<textarea rows="4" class="form-control mb-3" cols="60" name="ghichu" placeholder="Ghi chú"></textarea><br><br>
-	<button>GỬI LIÊN HỆ</button>
-	</div>
+	<div style="display: flex; align-items: center;">
+		<div style="margin-right: 80px; margin-left: 250px;border: 1px solid #BDBDBD;border-radius:8px;">
+			<h2> Chuyen ban le moto phan khoi lon nhap khau</h2>
+			<p>Tu van mua hang: 0353956450</p>
+			<p> <img src="images/moto/address.png"> &emsp; 101B Le Huu Trac,phuong Phuoc My,quan Son Tra, TP.Da Nang</p>
+			<p><img src="images/moto/telephone.png">&emsp; 035.3956.450</p>
+			<p><img src="images/moto/gmail.png">&emsp;hoanghuongnguyen2000@gmail.com</p>
+		</div>
+		<div style="margin-right: 50px; margin-left: 100px;border: 1px solid #BDBDBD;border-radius:6px;">
+			<h2> De lai loi nhan cho chung toi</h2>
+			<input type="text" name="nameCus" placeholder="Ho va ten khach hang"> &ensp; &ensp;
+			<input type="text" name="email" placeholder="Dia chi email"><br><br>
+			<input type="text" name="phonenumber" placeholder="So dien thoai">&ensp; &ensp;
+			<input type="text" name="tieude" placeholder="Tieu de"><br><br>
+			<textarea rows="4" class="form-control mb-3" cols="60" name="ghichu" placeholder="Ghi chú"></textarea><br><br>
+			<center>
+				<button style="background-color: red;">GỬI LIÊN HỆ</button>	
+			</center>																						
+		</div>
 	</div>
 	<div style="background-color: #A39B9B; height: 150px;">
 		<center style="font-size: 25px;justify-content: center; ">	
-			<p>Gui email  ve dia chi <span style="color: red;">hoanghuongnguyen.com.vn </span></h>
+			<p>Gui email  ve dia chi <span style="color: red;">hoanghuongnguyen.com.vn </span>
 			<br>Hoac goi Hotline ho tro de duoc tu van ve san pham ,dich vu:<span style="color: red;"> 1800 8001 </span>(Mien phi cho tat ca cac thue bao)</p>
 		</center>
 	</div>

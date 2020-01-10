@@ -1,5 +1,7 @@
 <?php
 session_start();
 unset($_SESSION['log']);
-header("location:index.php");
+unset($_SESSION['name']);
+session_destroy();
+header("location:index.html");
 ?>

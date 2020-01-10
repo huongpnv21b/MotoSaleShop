@@ -1,6 +1,6 @@
 <?php
-require_once "IMoto.php";
-abstract class Cart implements IMoto{
+
+ class Cart {
 	public $id;
 	public $name;
 	public $price;

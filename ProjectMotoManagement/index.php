@@ -3,7 +3,31 @@
 	require "model/User.php";
 	require "model/Honda_Moto.php";
 	require "model/Kawasaki_Moto.php";
-	// require "model/Cart.php";
+	require "model/Cart.php";
+
+
+	$sql = "SELECT * from moto";
+	$result = $db->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+	$motos = array();
+	for($i = 0; $i < count($result); $i++) {
+		$moto = $result[$i];
+		if($moto['type'] == 'Honda Motor'){
+			array_push($motos, new HondaMoto($moto['id'], $moto['name'], $moto['price'], $moto['image']));
+		}
+		if($moto['type'] == 'Kawasaki Motor'){
+			array_push($motos, new KawasakiMoto($moto['id'], $moto['name'], $moto['price'],  $moto['image']));
+        }
+    }
+// =================hienthicart==========
+    $sql = "SELECT * from cart";
+	$result1 = $db->query($sql)->fetch_all(MYSQLI_ASSOC);
+
+	$carts = array();
+	for($i = 0; $i < count($result1); $i++) {
+		$cart = $result1[$i];
+		array_push($carts, new Cart($cart['id'], $cart['name'], $cart['price'], $cart['image']));
+		}
 
 // =========================update for  admin==========================
 	if(isset($_POST['edit'])){
@@ -115,19 +139,42 @@
 				</div>
 	</div>
 	<!-- <div id="giaodien"> -->
-		<div>
-		<img class="nature" src="images/slide/hinh1.jpg" width="100%" height="500px">
-		<img class="nature" src="images/slide/hinh2.jpg" width="100%"height="500px">
-		<img class="nature" src="images/slide/hinh3.jpg" width="100%" height="500px">
-		<img class="nature" src="images/slide/hinh4.jpg" width="100%" height="500px">
-		<img class="nature" src="images/slide/hinh5.jpg" width="100%" height="500px">
-		<img class="nature" src="images/slide/hinh6.jpg" width="100%" height="500px">
+		<div style="margin-left:185px;">
+		<img class="nature" src="images/slide/hinh1.jpg" width="90%" height="500px">
+		<img class="nature" src="images/slide/hinh2.jpg" width="90%"height="500px">
+		<img class="nature" src="images/slide/hinh3.jpg" width="90%" height="500px">
+		<img class="nature" src="images/slide/hinh4.jpg" width="90%" height="500px">
+		<img class="nature" src="images/slide/hinh5.jpg" width="90%" height="500px">
+		<img class="nature" src="images/slide/hinh6.jpg" width="90%" height="500px">
 
 		<script>
 		w3.slideshow(".nature", 3000);
 		</script>
 	</div>
-
+	<hr style="border: 1px solid #A4A4A4">
+	<div id="show">
+		<center>
+			<h1> SAN PHAM NOI BAT</h1>
+            <div class="moto-container">
+                
+            <?php
+                
+                for($i = 0; $i < count($motos); $i++){
+            ?>
+            <div class="item-moto">
+                    <img class="image-moto" src=<?php echo $motos[$i]->getImagePath(); ?>>
+                    <p class="item-moto-name"><?php echo $motos[$i]->name ?></p>
+                    <p class="item-moto-type"><?php echo $motos[$i]->getType()?></p>
+                    <p class="item-moto-price"><?php echo $motos[$i]->getDisplayPrice() ?></p>
+                    <p class="item-moto-old-price"><?php echo $motos[$i]->getDisplayOldPrice() ?></p>
+             </div>   
+            <?php
+                }
+            ?> 
+              
+            </div> 
+            </center>  
+	</div>
 	<form id="register-form" class="login" method="post" style="display: none;">
 		<h1>Register</h1>
 		<input type="text" name="role" placeholder="Role" required=" Vui long dien day du thong tin">
@@ -138,14 +185,6 @@
 		<input type="email" name="email" placeholder="Enter your email" required=" Vui long dien day du thong tin">
 		
 		<button type="submit" class="button" name="register">Register</button>
-	</form>
-
-    <form id="edit-form" method="post" style="display: none;">
-		<h1>Edit</h1>
-		<input type="text" name="name" placeholder="Username">
-        <input type="text" name="price" placeholder="Price">
-		<input type="text" name="type" placeholder="Type">
-		<button name='update'>Update</button>
 	</form>
 
     <?php 	
@@ -160,6 +199,7 @@
     			<th>Price</th>
     			<th>Image</th>
     			<th> Quantity</th>
+    			<th> Total</th>
     			<th> Action</th>
     		</tr>
     		<?php
@@ -171,7 +211,13 @@
                 <td> <?php echo $result1[$i][1] ?></td>
                 <td><?php echo $result1[$i][3] ?></td>
                 <td><img  src="<?php echo $result1[$i][2] ?>" style="width:20px ; height: 20px" alt="Image"></td>
-    			<td><form method="post"><input type="text" name="quantity"></form></td>
+    			<td><form method="post" style="display: flex;s"><input type="text" name="quantity"><button name="load"><img style="width: 20px;height: 20px;" src="images/moto/refresh.png"></button></form></td>
+    			<td><?php  if(isset($_POST['load'])){
+    			if(isset($_POST['quantity'])){
+    						$sl=$_POST['quantity'];
+    						echo $tt=$sl*$result1[$i][3];
+    				}}?>    					
+    			</td>
     			<td>
     				<button class="delete" name="id_cart" value="<?php echo $result1[$i][0];?>">Delete</button></td>
     		</tr>
@@ -184,23 +230,25 @@
     <div  id="sumcart" class="pay">
 		    <h1>CỘNG GIỎ HÀNG</h1>
 		    <p>Tạm tính:  <?php  
-    			if(isset($_POST["quantity"])){ 
-    					echo $_POST["quantity"]*$result[$i][2] ;
-    				}
+    					echo $tt;		
     				?>
 		    </p>
-		    <p>Phí giao hàng: <?php  echo $chiphi=$tien*0.10 ?></p>
-		    <p>Tổng: <?php echo ($tien+$chiphi);?></p>
+		    <p>Phí giao hàng: <?php  echo $chiphi=$tt*0.10 ?></p>
+		    <p>Tổng: <?php echo ($tt+$chiphi);?></p>
 		    <form action = "" method="post">
 		    <button style="text-align: center;" name="order">Thanh toán</button>
 		    </form>
     	</div>
     </center>
-    <!-- <div class="div">
-
-		<img src="images/moto/moto1.jpg" alt=" Update image ">
-
-    </div> -->
+    <div style="display: flex;margin-left: 200px;">
+	    <div class="b">
+			<img class="img" src="images/moto/moto1.jpg" alt=" Update image ">
+			<p> </p>
+	    </div>
+	    <div class="c">
+			<img class="img" src="images/moto/moto1.jpg" alt=" Update image ">
+	    </div>
+	</div>
 	<div class="footer">
 		
 			<p>Liên hệ</p>
