@@ -6,7 +6,7 @@
 		}
 
 		function getImagePath(){
-			return "images/moto/".$this->image.".jpg";
+			return "../images/moto/".$this->image.".jpg";
 		}
 
 		function getDisplayPrice(){

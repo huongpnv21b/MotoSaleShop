@@ -6,7 +6,7 @@ class KawasakiMoto extends Moto {
 		return "Kawasaki Motor";
 	}
 	function getImagePath(){
-  		return "images/moto/".$this->image.".jpg";
+  		return "../images/moto/".$this->image.".jpg";
   }
   function getDisplayPrice(){
         return ($this->price * 20 / 100)." VND "." (-20%) ";
