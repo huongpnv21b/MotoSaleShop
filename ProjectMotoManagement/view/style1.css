@@ -4,7 +4,7 @@ table{
 	opacity:0.7;
 	margin-left: 20px;
 	margin-right: 30px;
-	width: 800px;
+	width: 1000px;
 }
 th{
 	background-color: #736666;
@@ -14,10 +14,13 @@ table tr th{
 	border: 1px solid black;
 }
 table tr td {
-	width: 170px;
+	border-collapse: collapse;
+	width: 200px;
 	margin-left: 20px;
 	text-align: center;
 	border: 1px solid black;
+}.thanhtoan{
+
 }
 .border-main{
 	border: 1px solid #dcdcdc;
@@ -219,7 +222,6 @@ header{
 	width:70px;
 	height: 30px;
 }
-
 footer{
 	background: #333;
 	padding: 16px;
@@ -233,7 +235,13 @@ footer{
 	  grid-template-columns: auto;
    }
 }
+.center{
+	width: 600px
+	margin-left:700px;
+	/*margin-right: 100px; */
+}
 .center a{
+	font-size: 22px;
 	align-items: center;
 	color: white;
 	text-decoration: none;
@@ -286,14 +294,14 @@ footer{
 			border: 1px solid #565151;
 			border-radius: 3px;
 		}
-	/*a { align-items: center;
-			font-size: 17px;
-			text-decoration: none;
-			color: white;
-		}*/
 .centera a{
-	margin-left: 300px;
+	font-size: 22px;
 	align-items: center;
 	color: white;
 	text-decoration: none;
+	
+}
+.centera{
+	margin-left: 70px;
+	margin-right: 600px;
 }

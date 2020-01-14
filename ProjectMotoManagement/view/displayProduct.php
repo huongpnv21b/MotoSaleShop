@@ -20,6 +20,8 @@ if (isset($_POST['id_delete'])) {
     $del = 'DELETE FROM moto WHERE id=' . $id;
     $db->query($del);
 }
+
+
 // ============buy======
 if (isset($_POST["buy"])) {
     $id = $_POST["buy"];
@@ -27,10 +29,8 @@ if (isset($_POST["buy"])) {
 
     $name1 = $motos[$id]->name;
     $price1 = $motos[$id]->price;
-    $image = $motos[$id]->image;
-
-    $sql = "INSERT INTO  cart(name,price,image ) 
-		 		values('$name1','$price1','$image')";
+    $sql = "INSERT INTO  cart(name,price ) 
+		 		values('$name1','$price1')";
     $db->query($sql);
     echo "<script> alert('them thanh cong'); </script>";
 }
@@ -77,6 +77,11 @@ if (isset($_POST["add"])) {
 </head>
 
 <body>
+    <form>
+        <input type="hidden" name="thamso" value="tim_kiem">
+        <input type="text" name="tu_khoa" value="" style="margin-top:10px;margin-bottom:10px;">
+        <input type="submit" value="Tìm">
+    </form>
     <form id="display" mehtod="post">
 
         <?php

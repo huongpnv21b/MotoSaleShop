@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title> Lien he</title>
 	<meta charshet="utf-8" />
 	<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
+
 <body>
 	<?php require "header.php";
 	?>
 	<div style="background-color:yellow;">
 		<center>
-		 <h1> ..</h1>
-		 </center>
+			<h1> ..</h1>
+		</center>
 	</div>
 	<div style="background-color:yellow;margin-top: 100px;">
 		<center>
-		<h1>LIEN HE </h1>
+			<h1>LIEN HE </h1>
 		</center>
 	</div>
 	<div style="display: flex; align-items: center;">
@@ -34,19 +36,20 @@
 			<input type="text" name="tieude" placeholder="Tieu de"><br><br>
 			<textarea rows="4" class="form-control mb-3" cols="60" name="ghichu" placeholder="Ghi chú"></textarea><br><br>
 			<center>
-				<button class="button1" onclick="Guilienhe()">GỬI LIÊN HỆ</button>	
-			</center>																						
+				<button class="button1" onclick="Guilienhe()">GỬI LIÊN HỆ</button>
+			</center>
 		</div>
 	</div>
 	<div style="background-color: #A39B9B; height: 150px;">
-		<center style="font-size: 25px;justify-content: center;">	
-			<p>Gui email  ve dia chi <span style="color: red;">hoanghuongnguyen.com.vn </span>
-			<br>Hoac goi Hotline ho tro de duoc tu van ve san pham ,dich vu:<span style="color: red;"> 1800 8001 </span>(Mien phi cho tat ca cac thue bao)</p>
+		<center style="font-size: 25px;justify-content: center;">
+			<p>Gui email ve dia chi <span style="color: red;">hoanghuongnguyen.com.vn </span>
+				<br>Hoac goi Hotline ho tro de duoc tu van ve san pham ,dich vu:<span style="color: red;"> 1800 8001 </span>(Mien phi cho tat ca cac thue bao)</p>
 		</center>
 	</div>
 	<?php
-		require "footer.php";
+	require "footer.php";
 	?>
 	<script src="index.js"></script>
 </body>
+
 </html>
