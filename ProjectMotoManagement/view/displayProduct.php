@@ -125,8 +125,8 @@ if (isset($_POST["add"])) {
                         <input type="text" name="price"><br>
                         <label class="label" for="select">Type</label>&ensp;
                         <select name="select">
-                            <option value="1">Honda Motor</option>
-                            <option value="2">Kawasaki Motor</option>
+                            <option value="Honda Motor">Honda Motor</option>
+                            <option value="Kawasaki Motor">Kawasaki Motor</option>
                         </select><br>
                         <div class="form-group"><br>
                             <label class="label" for="img">Image Product</label>&ensp;
