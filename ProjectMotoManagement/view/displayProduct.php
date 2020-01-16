@@ -93,9 +93,14 @@ if (isset($_POST["add"])) {
             border: 1px solid black;
         }
         .button{
-            width: 100px;
+            width: 200px;
             height: 40px;
             background-color: pink;
+        }
+        .button1{
+            width: 200px;
+            height: 40px;
+            background-color: red;
         }
     </style>
 </head>
@@ -156,7 +161,7 @@ if (isset($_POST["add"])) {
                 }
                 ?>
                 <form method="post">
-                    <button name="them">Them San Pham</button>
+                    <button  class="button1" name="them">Them San Pham</button>
                 </form>
                 <center>
                     <table>
