@@ -21,7 +21,22 @@ if (isset($_POST['id_delete'])) {
     $db->query($del);
 }
 
+// ==============UPdate============
 
+if (isset($_POST["update"])) {
+    $id = $_POST['id'];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $type = $_POST["type"];
+
+    $sql = "UPDATE moto SET name='$name ', price='$price', type='$type' where id= $id";
+    echo $sql;
+    if (mysqli_query($db, $sql)) {
+        echo '<script> alert("chinh sua thanh cong"); </script>';
+    } else {
+        echo '<script> alert("that bai tham hai :)"); </script>';
+    }
+}
 // ============buy======
 if (isset($_POST["buy"])) {
     $id = $_POST["buy"];
@@ -35,16 +50,20 @@ if (isset($_POST["buy"])) {
     echo "<script> alert('them thanh cong'); </script>";
 }
 //=======Add product of Admin========
+
 if (isset($_POST["add"])) {
-    echo "<script> alert('them thanh cong'); </script>";
     $name = $_POST["name"];
     $price = $_POST["price"];
     $type = $_POST["select"];
     $image = $_POST["img"];
 
-    $sql = "INSERT into moto values(null,'" . $name . "'," . $price . ",'" . $select . "','images/moto/" . $img . "')";
-    echo $sql;
-    $db->query($sql);
+    $sql = "INSERT INTO moto (`name`, `price`, `type`, `image`)
+    VALUES ('$name', '$price', '$type', '$image')";
+    if (mysqli_query($db, $sql)) {
+        echo "<script> alert('them thanh cong'); </script>";
+    } else {
+        echo "<script> alert('them khong thanh cong ***************************'); </script>";
+    }
 }
 
 ?>
@@ -77,12 +96,13 @@ if (isset($_POST["add"])) {
 </head>
 
 <body>
-    <form>
+    <!-- <form>
         <input type="hidden" name="thamso" value="tim_kiem">
         <input type="text" name="tu_khoa" value="" style="margin-top:10px;margin-bottom:10px;">
         <input type="submit" value="Tìm">
-    </form>
-    <form id="display" mehtod="post">
+    </form> -->
+
+    <form id="display" method="post">
 
         <?php
         if (isset($_SESSION['log'])) {
@@ -91,30 +111,53 @@ if (isset($_POST["add"])) {
                 <script>
                     document.getElementById("show").style.display = "none";
                 </script>
-                <form action="index.php" class="addproduct" method="post">
-                    <br>
-                    <h3>THEM SAN PHAM MOI</h3><br>
-                    <label> Name product</label>&ensp;
-                    <input type="text" name="name"><br>
-                    <label> Price product</label>&ensp;
-                    <input type="text" name="price"><br>
-                    <label for="select">Type</label>&ensp;
-                    <select name="select">
-                        <option value="1">Honda Motor</option>
-                        <option value="2">Kawasaki Motor</option>
-                    </select><br>
-                    <div class="form-group"><br>
-                        <label for="img">Image Product</label>&ensp;
-                        <input type="file" class="form-control-file col-md-3" name="img">
-                    </div>
-                    <button name="add">Add </button>
-                </form>
-                <form id="edit-form" method="post" style="display: none;">
-                    <h2>Edit</h2>
-                    <input type="text" name="name" placeholder="Username">&ensp;
-                    <input type="text" name="price" placeholder="Price"><br>
-                    <input type="text" name="type" placeholder="Type">
-                    <button name='update'>Update</button><br>
+                <?php if (isset($_POST['them'])) {
+                ?>
+                    <form class="addproduct" method="post">
+                        <br>
+                        <h3>THEM SAN PHAM MOI</h3><br>
+                        <label> Name product</label>&ensp;
+                        <input type="text" name="name"><br>
+                        <label> Price product</label>&ensp;
+                        <input type="text" name="price"><br>
+                        <label for="select">Type</label>&ensp;
+                        <select name="select">
+                            <option value="1">Honda Motor</option>
+                            <option value="2">Kawasaki Motor</option>
+                        </select><br>
+                        <div class="form-group"><br>
+                            <label for="img">Image Product</label>&ensp;
+                            <input type="file" class="form-control-file col-md-3" name="img">
+                        </div>
+                        <button name="add">Add </button>
+                    </form>
+                <?php
+                }
+                ?>
+
+                <?php
+                if (isset($_POST['edit'])) {
+                    $idedit = $_POST['edit'];
+                    for ($i = 0; $i < count($motos); $i++) {
+                        if ($idedit == $motos[$i]->id) {
+                ?>
+                            <form id="edit-form" method="post">
+                                <h2>Edit</h2>
+                                <input type="number" name="id" value="<?php echo $motos[$i]->id ?>" hidden>
+                                <input type="text" name="name" value="<?php echo $motos[$i]->name ?>">&ensp;
+                                <input type="text" name="price" value="<?php echo $motos[$i]->getDisplayPrice() ?>"><br>
+                                <input type="text" name="type" value="<?php echo $motos[$i]->getType() ?>">
+                                <button name='update' type="submit">Update</button><br>
+                            </form>
+                            <?php break; ?>
+
+                <?php
+                        }
+                    }
+                }
+                ?>
+                <form method="post">
+                    <button name="them">Them San Pham</button>
                 </form>
                 <center>
                     <table>
@@ -149,9 +192,12 @@ if (isset($_POST["add"])) {
                                     </td>
                                     <td width="100px;">
                                         <div style="display: flex;">
-                                            <button class="item-moto-edit" onclick="onEditClicked()" name="edit">Edit</button>
-                                            <form action="index.php" method="post">
-                                                <button class="item-moto-delete" name="id_delete" value="<?php echo $motos[$i]->id; ?>">Delete</button>
+                                            <form method="POST">
+                                                <button class="item-moto-edit" type="submit" name="edit" value="<?php echo $motos[$i]->id; ?>">Edit</button>
+                                            </form>
+
+                                            <form method="post">
+                                                <button class="item-moto-delete" name="id_delete" type="submit" value="<?php echo $motos[$i]->id; ?>">Delete</button>
                                             </form>
                                         </div>
                                     </td>

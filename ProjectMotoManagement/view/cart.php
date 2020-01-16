@@ -51,7 +51,7 @@ if (isset($_POST["id_cart"])) {
                         <td> <?php echo $carts[$i]->name ?></td>
                         <td><?php echo $carts[$i]->price ?></td>
                         <td>
-                            <form method="post" style="display: flex;s"><input style="width: 80px;" type="text" name="quantity" value="1"><button name="load" value="<?php echo $carts[$i]->id ?>"><img style="width: 20px;height: 20px;" src="../images/moto/refresh.png"></button></form>
+                            <form method="post"><input style="width:80px;" type="text" name="quantity" value="1"><button name="load" value="<?php echo $carts[$i]->id ?>"><img style="width:20px;height:20px;" src="../images/moto/refresh.png"></button></form>
                         </td>
 
                         <td>
@@ -82,12 +82,12 @@ if (isset($_POST["id_cart"])) {
         <center>
             <h1>CỘNG GIỎ HÀNG</h1>
             <p>Tạm tính:  <?php
-                            echo $total = $total + $tt;
+                            echo $total = $tt;
                             ?>
             </p>
             <p>Phí giao hàng: <?php echo $chiphi = $tt * 0.15 ?></p>
-            <p>Tổng: <?php echo ($tt + $chiphi); ?></p>
-            <button style=" text-align: center;" name="order" onclick="thanhtoan()">Thanh toán</button>
+            <p>Tổng: <?php echo ($total + $chiphi); ?></p>
+            <button style=" text-align: center;" onclick="thanhtoans()">Thanh toán</button>
 
 
         </center>

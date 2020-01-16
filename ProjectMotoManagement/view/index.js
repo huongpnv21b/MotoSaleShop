@@ -19,19 +19,15 @@ function DisplayCart() {
     alert("Cart");
     document.getElementById("DisplayCart").style.display = "block";
 }
-// function OK(){
-// 	document.getElementById("display").style.display = "none";
-//     document.getElementById("sumcart").style.display = "block";
-// }
 function Guilienhe() {
     alert("GUI THANH CONG");
 }
 
-function thanhtoan() {
-    alert("sng");
+function thanhtoans() {
     document.getElementById("hoadon").style.display = "none";
     document.getElementById("cart").style.display = "none";
     document.getElementById("DisplayCart").style.display = "none";
+    alert("sng");
     document.getElementById("thanhtoan").style.display = "block";
 }
 function hoadon() {

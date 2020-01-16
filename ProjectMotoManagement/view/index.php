@@ -20,15 +20,6 @@ for ($i = 0; $i < count($result); $i++) {
 	}
 }
 
-// =========================update for  admin==========================
-if (isset($_POST['edit'])) {
-	$name_edit = $_POST['namePr'];
-	$price_edit = $_POST['pricePr'];
-	$image_edit = $_POST['imagePr'];
-	$stm = 'UPDATE shoe set name="' . $name_edit . '", price=' . $price_edit . ', pic="Pic/' . $image_edit . '" WHERE id=' . $_POST['edit'] . '';
-	$db->query($stm)->fetch_all();
-}
-
 // ===================register============
 if (isset($_POST["register"])) {
 
@@ -42,17 +33,6 @@ if (isset($_POST["register"])) {
 	$db->query($sql);
 	echo "<script> alert(' dang ki thanh cong'); </script>";
 }
-
-if (isset($_POST["update"])) {
-	$name = $_POST["name"];
-	$price = $_POST["price"];
-	$type = $_POST["type"];
-	$sql = "UPDATE moto SET name='$name' and price='$price' and type='$type'";
-	$db->query($sql);
-	echo $sql;
-}
-
-
 
 
 $resultcart = mysqli_query($db, "SELECT * FROM cart");
