@@ -85,23 +85,22 @@ if (isset($_POST["add"])) {
             margin-top: 50px;
         }
 
-        label {
-            color: black;
+        .label {
+            color:red;
         }
 
         .addproduct {
             border: 1px solid black;
         }
+        .button{
+            width: 100px;
+            height: 40px;
+            background-color: pink;
+        }
     </style>
 </head>
 
 <body>
-    <!-- <form>
-        <input type="hidden" name="thamso" value="tim_kiem">
-        <input type="text" name="tu_khoa" value="" style="margin-top:10px;margin-bottom:10px;">
-        <input type="submit" value="Tìm">
-    </form> -->
-
     <form id="display" method="post">
 
         <?php
@@ -116,20 +115,20 @@ if (isset($_POST["add"])) {
                     <form class="addproduct" method="post">
                         <br>
                         <h3>THEM SAN PHAM MOI</h3><br>
-                        <label> Name product</label>&ensp;
+                        <label class="label"> Name product</label>&ensp;
                         <input type="text" name="name"><br>
-                        <label> Price product</label>&ensp;
+                        <label class="label"> Price product</label>&ensp;
                         <input type="text" name="price"><br>
-                        <label for="select">Type</label>&ensp;
+                        <label class="label" for="select">Type</label>&ensp;
                         <select name="select">
                             <option value="1">Honda Motor</option>
                             <option value="2">Kawasaki Motor</option>
                         </select><br>
                         <div class="form-group"><br>
-                            <label for="img">Image Product</label>&ensp;
+                            <label class="label" for="img">Image Product</label>&ensp;
                             <input type="file" class="form-control-file col-md-3" name="img">
                         </div>
-                        <button name="add">Add </button>
+                        <button class="button" name="add">Add </button>
                     </form>
                 <?php
                 }
