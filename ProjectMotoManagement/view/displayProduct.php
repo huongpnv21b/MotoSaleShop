@@ -30,7 +30,6 @@ if (isset($_POST["update"])) {
     $type = $_POST["type"];
 
     $sql = "UPDATE moto SET name='$name ', price='$price', type='$type' where id= $id";
-    echo $sql;
     if (mysqli_query($db, $sql)) {
         echo '<script> alert("chinh sua thanh cong"); </script>';
     } else {
@@ -98,7 +97,7 @@ if (isset($_POST["add"])) {
             background-color: pink;
         }
         .button1{
-            width: 200px;
+            width: 100px;
             height: 40px;
             background-color: red;
         }
@@ -196,11 +195,11 @@ if (isset($_POST["add"])) {
                                     </td>
                                     <td width="100px;">
                                         <div style="display: flex;">
-                                            <form method="POST">
+                                            <form action ="" method="POST">
                                                 <button class="item-moto-edit" type="submit" name="edit" value="<?php echo $motos[$i]->id; ?>">Edit</button>
                                             </form>
 
-                                            <form method="post">
+                                            <form  action="" method="post">
                                                 <button class="item-moto-delete" name="id_delete" type="submit" value="<?php echo $motos[$i]->id; ?>">Delete</button>
                                             </form>
                                         </div>
