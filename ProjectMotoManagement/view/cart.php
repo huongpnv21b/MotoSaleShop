@@ -51,7 +51,7 @@ if (isset($_POST["id_cart"])) {
                         <td> <?php echo $carts[$i]->name ?></td>
                         <td><?php echo $carts[$i]->price ?></td>
                         <td>
-                            <form method="post"><input style="width:80px;" type="text" name="quantity" value="1"><button name="load" value="<?php echo $carts[$i]->id ?>"><img style="width:20px;height:20px;" src="../images/moto/refresh.png"></button></form>
+                            <form method="post"style="display: flex;"><input style="width:80px;" type="text" name="quantity" value="1"><button name="load" value="<?php echo $carts[$i]->id ?>"><img style="width:20px;height:20px;" src="../images/moto/refresh.png"></button></form>
                         </td>
 
                         <td>
